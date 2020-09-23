@@ -1,0 +1,304 @@
+\documentclass[final, 3p, times, 12pt]{elsarticle} %final, twocolumn, 5p, 12pt, authoryear, twocolumn, 5p,
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[group-separator={,},group-minimum-digits=4]{siunitx}
+\usepackage[colorlinks=true, citecolor=blue, linkcolor=blue, filecolor=blue,urlcolor=blue,pdfauthor=author]{hyperref}
+\usepackage{makecell}
+\usepackage{colortbl}
+\usepackage{footmisc}
+\usepackage{manyfoot}
+\usepackage{nameref}
+
+\definecolor{lightgray}{gray}{0.95} 
+
+\newcommand{\COO}{\ensuremath{\mathrm{CO_2}} }
+
+
+\begin{document}
+\begin{frontmatter}
+    \title{An analysis of the completeness and spatio-temporal evolution and of buildings on OpenStreetMap}
+    \author[1]{Christian Mikovits\corref{cor1}}
+    \ead{christian.mikovits@boku.ac.at}
+    \cortext[cor1]{Corresponding author}
+    \address[1]{Institute for Sustainable Economic Development, University of Natural Resources and Life Sciences,
+    Feistmantelstrasse 4, 1180 Vienna, Austria}
+
+    \begin{abstract}
+        Access to official cadasdral data is often limited due to financial or administrative constraints which results that OpenStreetMap (OSM) is widely used in many projects as official, authoritative data on buildings and settlements are often not available or costly. However, data regarding buildings started only from 2006. Since, data was and is often scarce, incomplete or wrong, and therefor its usage can be questioned for some applications. This work analyses the development of this data on a temporal scale, presents a spatial comparison with official vector data where available, and additional a spatial comparison with two globally available raster data sets on building footprints.
+    \end{abstract}
+    \begin{keyword}
+        wind power\sep potential\sep evolution\sep OpenStreetMap\sep Europe
+    \end{keyword}
+\end{frontmatter}
+    
+\newpage
+
+\section{Introduction}\label{sec:introduction}
+OpenStreetMap (OSM) is currently the largest collaborative and openly licensed collection of geospatial data, widely used in many (scientific) projects as an alternative to authoritative data. First buildings were mapped in 2006 in the City of London and 
+
+new housing census in 2021, based on:
+
+https://ec.europa.eu/eurostat/documents/3859598/9670557/KS-GQ-18-010-EN-N.pdf/c3df7fcb-f134-4398-94c8-4be0b7ec0494
+
+EU Census data:
+
+https://ec.europa.eu/CensusHub2
+
+and
+
+https://episcope.eu/building-typology/country/ba/
+    
+\section{Material and Methods}\label{sec:material}
+\subsection{Country Overview}
+
+\begin{table}
+\caption[]{Census data}
+\begin{minipage}{\textwidth}
+\small
+\begin{center}
+\begin{tabular}{ |l|S[table-format=4.2]|S[table-format=5.0]|S[table-format=5.0]|S[table-format=5.0]|c|}
+ \hline
+ \thead{Country} & {\thead{Area \\ (in 1,000 km2)}} & {\thead{Population \\ (in 1,000)}} & {\thead{Dwellings \\ (in 1,000)}} & {\thead{Res. Buildings \\ (in 1,000)}} & \thead{year}\\
+ \hline
+ \rowcolor{lightgray}
+ Albania & 28.75 & 3069 & 1076 & 686 & 2011\\
+ Andorra & 0.47 & 76 & 47 & {-} & 2011\\
+ \rowcolor{lightgray}
+ Austria & 83.88 & 8402 & 4441 & 2191 & 2011\\
+ Belarus & 207.60 & 9504 & 3353 & 1612 & 2009\\
+ \rowcolor{lightgray}
+ Belgium & 30.69 & 11001 & 5515 & 4553{\footnote{total building stock\label{fn:totbdstock}}} & 2019\\
+ Bosnia \& Herzegovina & 51.13 & 3511 & 1619 & 863 & 2013\\
+ \rowcolor{lightgray}
+ Bulgaria & 110.99 & 7365 & 2667 & 1843 & 2011\\
+ Croatia & 56.59 & 4456 & 2247 & 1405\footnote{estimated from dwellings data and statistical information on the dwellings distribution; only residential\label{fn:estbd}} & 2011\\
+ \rowcolor{lightgray}
+ Cyprus & 9.25 & 839 & 433 & 283 & 2011\\
+ Czech Republic & 78.87 & 10437 & 4757 & 2158 & 2011\\
+ \rowcolor{lightgray}
+ Denmark & 42.92 & 5806 & 2835 & 1253 & 2019\\
+ Estonia & 45.23 & 1295 & 724 & 215 & 2011\\
+ \rowcolor{lightgray}
+ Faroe Islands & 52.65 & 17 & 16 & 16\footref{fn:estbd} & 2020\\
+ Finland & 338.46 & 5525 & 2734 & 1538 & 2019\\
+ \rowcolor{lightgray}
+ France & 640.68 & 64933 & 36600 & 14876 & 2013\\
+ Georgia & 69.70 & 3714 & 1109 & {-} & 2014\\
+ \rowcolor{lightgray}
+ Germany\footnote{more detailed and recent data for some federal states available} & 357.58 & 82019 & 40545 & 21760{\footnote{residential buildings and public buildings}} & 2011\\
+ Great Britain\footnote{England and Wales \& Scotland} & 228.95 & 61371 & 26860 & 20498\footref{fn:estbd} & 2011\\
+ \rowcolor{lightgray}
+ Greece & 131.96 & 10816 & 6384 & 4106 & 2011\\
+ Hungary & 93.03 & 9938 & 4383 & 2641 & 2011\\
+ \rowcolor{lightgray}
+ Iceland & 102.78 & 316 & 118 & 57\footref{fn:estbd} & 2011\\
+ Ireland \& Northern Ireland & 84.42 & 6399 & 2743 & {-} & 2011\\
+ \rowcolor{lightgray}
+ Italy & 301.34 & 59434 & 24495 & 13600 & 2011\\
+ Kosovo & 10.89 & 1740 & 413 & 368 & 2011\\
+ \rowcolor{lightgray}
+ Latvia & 64.59 & 2070 & 1025 & {-} & 2011\\
+ Liechtenstein & 0.16 &	38 & 17 & 11 & 2015\\
+ \rowcolor{lightgray}
+ Lithuania & 65 & 3043 & 1389 & {-} & 2011\\
+ Luxembourg & 2.59 & 602 & 234 & 143 & 2017\\
+ \rowcolor{lightgray}
+ Macedonia & 25.71 & 2023 & 698 & {-} & 2002\\
+ Malta & 0.32 & 417 & 224 & {-} & 2011\\
+ \rowcolor{lightgray}
+ Moldova & 33.85 & 2805 & 1236 & 910 & 2014\\
+ Monaco & 0.002 & 37 & 20 & {-} & 2016\\
+ \rowcolor{lightgray}
+ Montenegro & 13.81 & 620 & 247 & 172 & 2011\\
+ Netherlands & 41.87 & 17282 & 9088 & {-} & 2019\\
+ \rowcolor{lightgray}
+ Norway & 385.21 & 5375 & 2610 & 4213\footref{fn:totbdstock} & 2020\\
+ Poland & 312.70 & 38006 & 13009 & 5568 & 2011\\
+ \rowcolor{lightgray}
+ Portugal & 92.21 & 10562 & 5055 & 3544 & 2011\\
+ Romania & 238.40 & 18384 & 8459 & 5118 & 2011\\
+ \rowcolor{lightgray}
+ Serbia & 88.36 & 7187 & 3232 & 2137 & 2011\\
+ Slovakia & 49.04 & 5397 & 1709 & 1071 & 2011\\
+ \rowcolor{lightgray}
+ Slovenia & 20.27 & 2055 & 852 & 519 & 2011\\
+ Spain & 505.99 & 46816 & 25209 & 9815 & 2011\\
+ \rowcolor{lightgray}
+ Sweden & 450.30 & 10328 & {-} & 4978 & 2019\\
+ Switzerland & 41.29 & 8545 & 4529 & 1749 & 2018\\
+ \rowcolor{lightgray}
+ Turkey & 783.36 & 67099 & 19482 & 8490 & 2011\\
+ Ukraine & 603.55 & 32291 & 19400 & 10200 & 2011\\
+ \hline
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+
+\subsubsection{Albania}
+The portal of the \emph{State Authority for Geospatial Information (ASIG)} can be found under: \url{https://geoportal.asig.gov.al}. Downloadable datasets are not available, buildings data is available as a map scan in an online application.
+\subsubsection{Andorra}
+The portal of the \emph{Àrea de Cartografia - Govern d'Andorra} can be found under: \url{https://www.cartografia.ad}. Additionally to the online map-viewer several data is available for download. Buildings can be downloaded here: \url{https://www.ideandorra.ad/geodades/index.jsp} as shapefiles which has to be done manually per sector.
+\subsubsection{Austria}
+Downloadable geodata can be found under: \url{https://data.gv.at}. Data for buildings is available for some federal states and municipalities, for whole Austria it is possible to extract data from official vectortiles (pbf format) provided here: \url{https://basemap.at}.
+\subsubsection{Belarus}
+Online data and downloadable datasets are available under: \url{https://gismap.by} and under: \url{https://opendata.by/dataset}. There is no download possibility for buildings.
+\subsubsection{Belgium}
+The geodata portal can be found under: \url{https://www.geo.be}, other open data including some geodata here: \url{https://data.gov.be}. For the whole of Belgium downloadable a buildings dataset is not available. The city of Brussels offers a download.
+\subsubsection{Bosnia And Herzegovina}
+No information on publicly available datasets can be found.
+\subsubsection{Bulgaria}
+The open data portal can be found under: \url{https://data.egov.bg}. No geodata is available.
+\subsubsection{Croatia}
+The open data portal can be found under: \url{https://data.gov.hr}. No geodata is available.
+\subsubsection{Cyprus}
+Online map data and scanned PDFs are available here: \url{https://portal.dls.moi.gov.cy}. Vectorized buildings data is not available.
+\subsubsection{Czechia}
+The open data portal can be found under: \url{https://data.gov.cz}, no geodata is available. A raster tile map server is available here, providing buildings information: \url{http://ruian.poloha.net}.
+\subsubsection{Denmark}
+Geodata and downloads are available at: \url{https://download.kortforsyningen.dk} given the availability of a danish civil registration number (CPR).
+\subsubsection{Estonia}
+The geodata portal can be found here: \url{https://geoportaal.maaamet.ee}. The whole cadastre, including buildings, can be downloaded without any registration.
+\subsubsection{Finland}
+The geodata portal can be found under: \url{https://www.maanmittauslaitos.fi}. In theory a download is possible, in reality this has to be done for ten thousands of tiles manually without the possibility for automation. Bulk data can also be ordered for money.
+\subsubsection{France}
+Open (geo) data portals exist: \url{data.gouv.fr} and \url{http://www.geoportail.fr}. Freely available buildings data for the whole country is not available, apart from larger cities with separate portals. The french OSM team managed to semi-automatically push data provided by \url{https:\\cadastre.gouv.fr} per \emph{Département} into the OSM database. Virtually \SI{100}{\percent} of buildings should be in OSM.
+\subsubsection{Georgia}
+Open data can be found under: \url{https://www.datalab.ge}. No geodata is available.
+\subsubsection{Germany}
+For the whole country data can be found under: \url{https://www.geoportal.de}. Some more data is available under: \url{https://www.govdata.de} and special cadastre data under: \url{http://www.adv-online.de}.
+Freely available buildings data for the whole of Germany is not available. The separate federal states run their own portals with varying data availability:
+\paragraph{Baden-Würtemberg}
+The portal can be found under: \url{https://www.lgl-bw.de/unsere-themen/Produkte/Geodaten/}, download of data is a payed service.
+\paragraph{Bavaria}
+The portal can be found under: \url{https://geodatenonline.bayern.de/geodatenonline}, download of data is a payed service.
+\paragraph{Berlin}
+Geodata can be found under: \url{https://daten.berlin.de/tags/geodaten}. Buildings data is available as WFS vector data.
+\paragraph{Brandenburg}
+The portal can be found under: \url{https://geobasis-bb.de/lgb/de/geodaten}, download of data is a payed service.
+\paragraph{Bremen}
+The portal can be found under: \url{https://www.geo.bremen.de}, download of data is a payed service.
+\paragraph{Hamburg}
+The portal can be found under: \url{https://www.hamburg.de}, download of data is a payed service.
+\paragraph{Hesse}
+The portal can be found under: \url{https://www.gds.hessen.de}, download of data is a payed service.
+\paragraph{Lower Saxony}
+The portal can be found under: \url{https://www.geobasisdaten.niedersachsen.de}, download of data is a payed service.
+\paragraph{Mecklenburg-Vorpommern}
+The portal can be found under: \url{https://www.laiv-mv.de/Geoinformation}, download of data is a payed service.
+\paragraph{North Rhine-Westphalia}
+The portal can be found under:
+\url{https://www.geoportal.nrw}. The download of data, including buildings, is free.
+\paragraph{Rhineland-Palatinate}
+The portal can be found under: \url{https://lvermgeo.rlp.de}, download of data is a payed service.
+\paragraph{Saarland}
+The portal can be found under: \url{https://geoportal.saarland.de}, download of data is a payed service.
+\paragraph{Saxony}
+The portal can be found under: \url{https://www.geodaten.sachsen.de}
+\paragraph{Saxony-Anhalt}
+The portal can be found under: \url{https://www.lvermgeo.sachsen-anhalt.de}. Some data is freely available for download, buildings data is not available.
+\paragraph{Schleswig-Holstein}
+The portal can be found under: \url{https://sh-mis.gdi-sh.de}. Buildings data is a payed service.
+\paragraph{Thuringia}
+The portal can be found under: \url{https://www.geoportal-th.de}. Buildings data is freely available as a shapefile.
+\subsubsection{Great Britain}
+Open data and geodata are available under: \url{https://data.gov.uk} and \url{http://geoportal.statistics.gov.uk/}. Cadastre download per municipality is possible, but no classification within the data regarding the polygons, the buildings data cannot be extracted.\\
+Until mid 2020 buildings data was made available by the \emph{Department of Urban Studies and Planning} of \emph{The University of Sheffield}. The dataset is complete, but attached buildings are treated as a single polygon feature.
+\subsubsection{Greece}
+The portal can be found under: \url{http://geodata.gov.gr/en}. No buildings data is available.
+\subsubsection{Hungary}
+The open data portal can be found under: \url{http://www.opendata.hu}. No geodata or buildings data are available.
+\subsubsection{Iceland}
+The open data portal can be found under: \url{https://www.lmi.is/en}. Some geodata is available, no buildings data.
+\subsubsection{Ireland \& Northern Ireland}
+The open data portal can be found under: \url{https://data.gov.ie}, some geodata is available under: \url{https://data-osi.opendata.arcgis.com}. No data on buildings is available. For northern Ireland the data portal is available under: \url{https://www.opendatani.gov.uk} with some geodata but no buildings data. According to \href{https://tasks.openstreetmap.ie/about}{OSM Ireland} by the end of 2019 only \SI{20}{/percent} of buildings in Ireland (Island of Ireland) were mapped in \emph{OSM}.
+\subsubsection{Italy}
+The open data portals can be found under: \url{https://www.dati.gov.it} and \url{http://www.datiopen.it}. Some geodata for single cities and small regions are available. No buildings data for larger regions (\emph{Provinces}) or the whole country.
+\subsubsection{Kosovo}
+The data portal can be found under: \url{https://opendata.rks-gov.net}. No downloadable geodata is available.
+\subsubsection{Latvia}
+The data portals can be found under: \url{https://data.gov.lv} and \url{https://www.lvmgeo.lv}. No buildings data is available.
+\subsubsection{Liechtenstein}
+The geodata portal can be found under: \url{https://geodaten.llv.li}. For buildings data see: \ref{ssdata:Switzerland} \nameref{ssdata:Switzerland}.
+\subsubsection{Lithuania}
+The data portal can be found under: \url{https://www.geoportal.lt}. No buildings data is available.
+\subsubsection{Luxembourg}
+The data portal can be found under: \url{https://data.public.lu}. Buildings data is freely available for download.
+\subsubsection{Malta}
+The data portal can be found under: \url{https://open.data.gov.mt}. No buildings data is available.
+\subsubsection{Macedonia}
+The data portal can be found under: \url{http://www.otvorenipodatoci.gov.mk}. No buildings data is available. Cadastral data can be bought under: \url{ http://www.katastar.gov.mk}.
+\subsubsection{Moldova}
+The data portal can be found under: \url{https://date.gov.md}. More geodata is available under: \url{http://www.geoportal.md}. Online viewer is available, no downloads.
+\subsubsection{Montenegro}
+The data portal can be found under: \url{http://www.mha.gov.me/en/Data-Room}. No buildings data is available.
+\subsubsection{Netherlands}
+The open data portal can be found under: \url{https://opendata.cbs.nl}. Buildings data is freely available through the \emph{TU Delft} under: \url{http://3dbag.bk.tudelft.nl/downloads}.
+\subsubsection{Norway}
+The data portal can be found under: \url{https://data.norge.no}. No data on buildings is available.
+\subsubsection{Poland}
+The data portal can be found under: \url{https://dane.gov.pl}. Geodata is available under: \url{https://geoportal.gov.pl}. Buildings data is not freely available.
+\subsubsection{Portugal}
+The open data portal can be found under: \url{https://dados.gov.pt}. Geodata is available under: \url{http://epic-webgis-portugal.isa.ulisboa.pt/data}. No data for download.
+\subsubsection{Romania}
+The open data portal can be found under: \url{https://data.gov.ro}, geodata is also available under: \url{http://geoportal.igr.ro}. No vectorized buildings data is available for download.
+\subsubsection{Serbia}
+The open data portal can be found under: \url{https://data.gov.rs}. No buildings data is available.
+\subsubsection{Slovakia}
+The geodata portal can be found under: \url{http://geoportal.gov.sk}. No buildings data download is available.
+\subsubsection{Slovenia}
+The data portal can be found under: \url{http://www.e-prostor.gov.si}. Buildings data can be downloaded freely without registration under: \url{ https://podatki.gov.si}.
+\subsubsection{Spain}
+The open data portal can be found under: \url{https://datos.gob.es}. Cadasdre data is available online and imported by \href{https://wiki.openstreetmap.org/wiki/Spanish_Cadastre/Buildings_Import}{the spanish OSM team} twice a year, meaning the spanish data can be considered to be complete.
+\subsubsection{Sweden}
+The open data portal can be found under: \url{https://oppnadata.se}. No data on buildings is available.
+\subsubsection{Switzerland}\label{ssdata:Switzerland}
+Geodata, including buildings is provided as official vectortiles (pbf format) under: \url{https://www.geo.admin.ch/}.
+\subsubsection{Turkey}
+The geoportal can be found under: \url{https://www.geoportal.gov.tr}. No downloads are available.
+\subsubsection{Ukraine}
+An online map is available under: \url{https://map.land.gov.ua}. No download is possible.
+
+
+\begin{table}
+\caption[]{Total buildings data}
+\begin{minipage}{\textwidth}
+\small
+\begin{center}
+\begin{tabular}{ |l|S[table-format=5.2]|S[table-format=5.2]|}
+ \hline
+ \thead{Country} & {\thead{Census \\ (in 1,000)}} & {\thead{Geodata \\ (in 1,000)}}\\
+ \hline
+ \rowcolor{lightgray}
+ Andorra & {-} & 8.60\\
+ Austria & 2191.28 & 4837.98\footnote{from online vectortiles\label{fn:vectortiles}}\\
+ \rowcolor{lightgray}
+ Belgium & 4552.75 & {-}\\
+ Estonia & 215.62 & 926.45\\
+ \rowcolor{lightgray}
+ Germany &  55000 & \\
+ Luxembourg & 142.82 & 232.72\\
+ \rowcolor{lightgray}
+ Netherlands & {-} & 10226.57\\
+ Norway & 4212.72 & {-}\\
+ Slovenia & 518.60 & 1188.77\\
+ \rowcolor{lightgray}
+ Switzerland & 1748.48 & 2309.35\footref{fn:vectortiles}\\
+ \hline
+\end{tabular}
+\end{center}
+
+\end{minipage}
+\end{table}
+
+\section{Results and Discussion}\label{sec:results}
+\subsection{Statistical Analysis}
+\section{Geostatistical Analysis}
+\section{Conclusions}\label{sec:conclusions}
+
+\end{document}
