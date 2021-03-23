@@ -10,14 +10,24 @@
 
 ### Geostatistics
 
-Analysis on hexagon grid basis:
+Analysis on area basis:
 
-| area | horizontal | vertical | number    |
-|------|------------|----------|-----------|
-| 10   | 3,924      | 3,398    | 1,887,923 |
-| 100  | 12,408     | 10,746   | 195,053   |
+| type        | area | horizontal | vertical | number    |
+|-------------|------|------------|----------|-----------|
+| political   | var. |            |          |     1,719 |
+| regular hex |  10  | 3,924      | 3,398    | 1,887,923 |
+| regular hex | 100  | 12,408     | 10,746   |   195,053 |
+
+Data from OSM, GHS and GUF is clipped for each  area and the following values are calculated for each dataset:
+
+- area
+- no of features 
+- mean center (x,y)
+- standard distance
 
 #### OSM vs GHS
+
+
 
 #### OSM vs GUF
 
