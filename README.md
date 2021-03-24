@@ -33,10 +33,34 @@ polygons (NUTS, HEX)
 -> selection of corresponding raster files
 -> 
 
-#### GHS (Global Human Settlement)
+#### GHSL (Global Human Settlement Layer - EU JRC) S1
+
+https://ghsl.jrc.ec.europa.eu/ghs_bu_s1_2019.php
 
 - the tif filename can be fetched from a shp - fieldname: "location"
-- values: 1 = building (built up area)
+- values: 1 = building (built up area); 0 = empty
+- year: 2018
+- resolution: 20m
+
+
+#### GHSL (Global Human Settlement Layer - EU JRC) S2
+
+https://ghsl.jrc.ec.europa.eu/ghs_bu_s2_2018.php
+
+- the tif filename can be fetched from a shp - fieldname: "location"
+- values: probability from 0-100
+- year: 2018
+- resolution: 10m
+
+#### ESM (European Settlement Layer - EU JRC)
+
+https://ghsl.jrc.ec.europa.eu/download.php?ds=ESM
+
+- the tif filename can be fetched from a shp - fieldname: "location"
+- values: 0 = no data, 1 = land, 2 = water, 255 = built up
+- year: 2015
+- resolution: 2m
+
 
 #### GUF (Global Urban Footprint - DLR)
 
@@ -55,3 +79,4 @@ GUF04_DLR_v02_
 - dd: for n: bb-5, for s: bb+5
 
 - values: 0 = building, 255 = empty
+- resolution: 0.4 arcseconds (~12m at equator, 
