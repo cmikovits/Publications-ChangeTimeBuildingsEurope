@@ -64,6 +64,8 @@ https://ghsl.jrc.ec.europa.eu/download.php?ds=ESM
 
 #### GUF (Global Urban Footprint - DLR)
 
+https://www.dlr.de/guf
+
 filename:
 ```
 GUF04_DLR_v02_
