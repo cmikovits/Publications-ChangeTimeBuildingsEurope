@@ -29,7 +29,9 @@ Data from OSM, GHS and GUF is clipped for each  area and the following values ar
 
 polygons (NUTS, HEX) feature loop
 1. polygon -> bounding box points
-  1. polygon 
+2. get raster names
+3. load raster files and merge
+4. calculate zonal statistics (for raster: rasterstats)
 
 #### GHSL S1 (Global Human Settlement Layer Sentinel1 - EU JRC)
 
