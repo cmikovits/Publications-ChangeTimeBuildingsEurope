@@ -25,9 +25,25 @@ Data from OSM, GHS and GUF is clipped for each  area and the following values ar
 - mean center (x,y)
 - standard distance
 
-#### OSM vs GHS
+#### GHS
 
+- the tif filename can be fetched from a shp - fieldname: "location"
+- values: 1 = building (built up area)
 
+#### GUF (DLR)
 
-#### OSM vs GUF
+filename:
+```
+GUF04_DLR_v02_
++ [e|w][aaa]_
++ [n|s][bb]_
++ [e|w][ccc]_
++ [n|s][dd]_
++ OGR04.tif
+```
+- aaa: 000-180 in steps of 5 degrees
+- bb: 00-85 in steps of 5 degrees
+- ccc: for w: aaa-5, for e: aaa+5
+- dd: for n: bb-5, for s: bb+5
 
+- values: 0 = building, 255 = empty
