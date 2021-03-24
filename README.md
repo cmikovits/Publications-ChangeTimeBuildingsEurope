@@ -27,11 +27,9 @@ Data from OSM, GHS and GUF is clipped for each  area and the following values ar
 
 #### Workflow:
 
-polygons (NUTS, HEX)
--> feature loop
--> bounding box
--> selection of corresponding raster files
--> 
+polygons (NUTS, HEX) feature loop
+1. polygon -> bounding box points
+  1. polygon 
 
 #### GHSL S1 (Global Human Settlement Layer Sentinel1 - EU JRC)
 
