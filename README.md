@@ -14,7 +14,7 @@ Analysis on area basis:
 
 | type                | area | horiz. |  vert. |    number |
 |---------------------|------|--------|--------|-----------|
-| political ( NUTS3)  |   -  |        |        |     1,719 |
+| political ( NUTS3)  |   -  |      - |      - |     1,719 |
 | regular hex         |  10  |  3,924 |  3,398 | 1,887,923 |
 | regular hex         | 100  | 12,408 | 10,746 |   195,053 |
 
