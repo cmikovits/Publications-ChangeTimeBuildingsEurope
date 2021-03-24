@@ -33,7 +33,7 @@ polygons (NUTS, HEX)
 -> selection of corresponding raster files
 -> 
 
-#### GHSL (Global Human Settlement Layer - EU JRC) S1
+#### GHSL S1 (Global Human Settlement Layer Sentinel1 - EU JRC)
 
 https://ghsl.jrc.ec.europa.eu/ghs_bu_s1_2019.php
 
@@ -43,7 +43,7 @@ https://ghsl.jrc.ec.europa.eu/ghs_bu_s1_2019.php
 - resolution: 20m
 
 
-#### GHSL (Global Human Settlement Layer - EU JRC) S2
+#### GHSL S2 (Global Human Settlement Layer Sentinel2 - EU JRC)
 
 https://ghsl.jrc.ec.europa.eu/ghs_bu_s2_2018.php
 
