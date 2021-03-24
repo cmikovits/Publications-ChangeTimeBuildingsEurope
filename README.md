@@ -12,11 +12,11 @@
 
 Analysis on area basis:
 
-| type        | area | horizontal | vertical | number    |
-|-------------|------|------------|----------|-----------|
-| political   | var. |            |          |     1,719 |
-| regular hex |  10  | 3,924      | 3,398    | 1,887,923 |
-| regular hex | 100  | 12,408     | 10,746   |   195,053 |
+| type                | area | horizontal | vertical | number    |
+|---------------------|------|------------|----------|-----------|
+| political ( NUTS3)  | var. |            |          |     1,719 |
+| regular hex         |  10  | 3,924      | 3,398    | 1,887,923 |
+| regular hex         | 100  | 12,408     | 10,746   |   195,053 |
 
 Data from OSM, GHS and GUF is clipped for each  area and the following values are calculated for each dataset:
 
@@ -25,12 +25,20 @@ Data from OSM, GHS and GUF is clipped for each  area and the following values ar
 - mean center (x,y)
 - standard distance
 
-#### GHS
+#### Workflow:
+
+polygons (NUTS, HEX)
+-> feature loop
+-> bounding box
+-> selection of corresponding raster files
+-> 
+
+#### GHS (Global Human Settlement)
 
 - the tif filename can be fetched from a shp - fieldname: "location"
 - values: 1 = building (built up area)
 
-#### GUF (DLR)
+#### GUF (Global Urban Footprint - DLR)
 
 filename:
 ```
