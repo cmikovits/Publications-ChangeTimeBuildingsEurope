@@ -12,11 +12,11 @@
 
 Analysis on area basis:
 
-| type                | area | horizontal | vertical | number    |
-|---------------------|------|------------|----------|-----------|
-| political ( NUTS3)  | var. |            |          |     1,719 |
-| regular hex         |  10  | 3,924      | 3,398    | 1,887,923 |
-| regular hex         | 100  | 12,408     | 10,746   |   195,053 |
+| type                | area | horiz. |  vert. |    number |
+|---------------------|------|--------|--------|-----------|
+| political ( NUTS3)  |   -  |        |        |     1,719 |
+| regular hex         |  10  |  3,924 |  3,398 | 1,887,923 |
+| regular hex         | 100  | 12,408 | 10,746 |   195,053 |
 
 Data from OSM, GHS and GUF is clipped for each  area and the following values are calculated for each dataset:
 
