@@ -81,4 +81,19 @@ GUF04_DLR_v02_
 - dd: for n: bb-5, for s: bb+5
 
 - values: 0 = building, 255 = empty
-- resolution: 0.4 arcseconds (~12m at equator, 
+- resolution: 0.4 arcseconds (~12m at equator,
+
+east and south is easy, always lower number then higher number:
+```GUF04_DLR_v02_e030_s05_e035_s10_OGR04```
+east and north:
+```GUF04_DLR_v02_e010_n55_e015_n50_OGR04```
+west and south:
+```GUF04_DLR_v02_w180_s30_w175_s35_OGR04```
+west and north:
+```GUF04_DLR_v02_w150_n65_w145_n60_OGR06```
+
+attention:
+w000 is always e000:
+```GUF04_DLR_v02_w005_n05_e000_n00_OGR04```
+s00 is always n00:
+```GUF04_DLR_v02_e170_n00_e175_s05_OGR04```
