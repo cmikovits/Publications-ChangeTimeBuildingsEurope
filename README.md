@@ -28,10 +28,11 @@ Data from OSM, GHS and GUF is clipped for each  area and the following values ar
 #### Workflow:
 
 polygons (NUTS, HEX) feature loop
-1. polygon -> bounding box points
-2. get raster names
-3. load raster files and merge
-4. calculate zonal statistics (for raster: rasterstats)
+1. polygon -> get OSM buildings from dataset (sjoin)
+2. polygon -> bounding box points
+3. get raster names
+4. load raster files and merge
+5. calculate zonal statistics (for raster: rasterstats)
 
 #### GHSL S1 (Global Human Settlement Layer Sentinel1 - EU JRC)
 
